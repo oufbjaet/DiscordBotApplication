@@ -1,25 +1,32 @@
-const Discord = require('discord.js');
-
-
-exports.run = function(client, message) {
-
-    const embed = new Discord.RichEmbed()
-        .setAuthor(message.author.tag)
-        .setImage(message.author.avatarURL)
-
-    message.channel.send(embed);
-
-};
-
-exports.conf = {
-  enabled: true, 
-  guildOnly: true, 
-  aliases: ['avatarım'],
-  permLevel: 0 
-};
-
-exports.help = {
-  name: 'avatarr', 
-  description: 'Avatarınızı gösterir',
-  usage: 'avatarr'
-};
+exports.run = async (client, message, args) => {
+    try {
+      let invite = await message.channel.createInvite({
+        maxAge: args.age * 60,
+        maxUses: args.uses
+      });
+  
+      message.channel.send('Bu Sunucunun Davet Linkini Kurdum.\n'
+        + 'Link Aşağıda'
+        + 'Bu Sunucun Davet Linki \n' +
+        `https://discord.gg/${invite.code}`).catch(e => {
+        client.log.error(e);
+      });
+    }
+    catch (e) {
+      client.log.error(e);
+    }
+  };
+  
+  exports.conf = {
+    enabled: true,
+    guildOnly: false,
+    aliases: ['create-link', 'createlink', 'sunucudavet', 'davetkur', 'davetlink', 'davetoluştur', 'davet-link' , 'davet-oluştur'],
+    permLevel: 0
+  };
+  
+  exports.help = {
+    name: 'davet-kur',
+    description: 'Bulunduğunuz sunucunun davet linkini atar.',
+    usage: 'davet-kur'
+  };
+  
