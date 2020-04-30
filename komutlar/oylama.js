@@ -21,7 +21,7 @@ const Discord = require('discord.js');
        .setColor("RANDOM")
        .setThumbnail(client.user.avatarURL)
        .setTimestamp()
-       .setFooter('MeeTR', client.user.avatarURL)
+       .setFooter('HusooTV', client.user.avatarURL)
 
        .addField(`**Oylama**`, `**${question}**`)).then(function(message) {
 
