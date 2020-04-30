@@ -1,5 +1,7 @@
+
 {
-  "prefix": "prefix",
-  "token": "bottoken",
-  "sahip": "sahipid"
+    "token" : "tokenBOT",
+	"adminID" : "adminİD",
+    "prefix" : "prefix",
+	"passes" : 1
 }
